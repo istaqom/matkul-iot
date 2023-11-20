@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const attendance = require("../services/users");
+const users = require("../services/users");
 
 /* GET programming languages. */
 router.get("/", async function (req, res, next) {
   try {
-    res.json(await attendance.getMultiple(req.query.page));
+    res.json(await users.getMultiple(req.query.page));
   } catch (err) {
     console.error(`Error while getting programming languages `, err.message);
     next(err);
@@ -15,7 +15,7 @@ router.get("/", async function (req, res, next) {
 router.post('/', async (req, res) => {
   try {
     const user = req.body;
-    const result = await userService.createUser(user);
+    const result = await users.createUser(user);
     res.json(result);
   } catch (err) {
     res.status(500).send(err.message);
