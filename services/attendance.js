@@ -7,7 +7,7 @@ async function getMultiple(page = 1) {
   const offset = helper.getOffset(page, config.listPerPage);
   const rows = await db.query(
     `SELECT * 
-    FROM user`
+    FROM attendance`
   );
   const data = helper.emptyOrRows(rows);
   const meta = { page };
